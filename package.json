@@ -23,8 +23,13 @@
     "standard": "^11.0.1"
   },
   "dependencies": {
+    "bugverse-agent": "file:../bugverse-agent",
     "chalk": "^2.3.2",
     "debug": "^3.1.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "express-asyncify": "^1.0.0",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "socket.io": "^2.0.4"
   }
 }
