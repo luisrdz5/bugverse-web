@@ -1,35 +1,62 @@
 {
   "name": "bugverse-web",
   "version": "1.0.0",
-  "description": "A Simple IoT Platform - Web",
+  "description": "A Simple IoT Platform - Web Dashboard",
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
+    "prestart": "npm run build",
     "start-dev": "DEBUG=bugverse:* nodemon server.js",
+    "prestart-dev": "npm run build",
+    "build": "browserify -t babelify -t vueify client/app.js -o public/bundle.js",
     "lint": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luisrdz5/bugverse-web.git"
+    "url": "git+https://github.com/platzi/platziverse.git"
   },
   "author": "Luis Antonio Rodriguez Garcia",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luisrdz5/bugverse-web/issues"
+    "url": "https://github.com/platzi/platziverse/issues"
   },
-  "homepage": "https://github.com/luisrdz5/bugverse-web#readme",
+  "homepage": "https://github.com/platzi/platziverse#readme",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
   "devDependencies": {
-    "nodemon": "^1.17.2",
-    "standard": "^11.0.1"
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.5.0",
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.3",
+    "vueify": "^9.4.1"
   },
   "dependencies": {
+    "babel-preset-stage-2": "^6.24.1",
     "bugverse-agent": "file:../bugverse-agent",
-    "chalk": "^2.3.2",
-    "debug": "^3.1.0",
-    "express": "^4.16.3",
+    "chalk": "^2.1.0",
+    "chart.js": "^2.6.0",
+    "debug": "^3.0.0",
+    "express": "^4.15.4",
     "express-asyncify": "^1.0.0",
-    "request": "^2.85.0",
-    "request-promise-native": "^1.0.5",
-    "socket.io": "^2.0.4"
+    "moment": "^2.21.0",
+    "proxy": "^0.2.4",
+    "random-material-color": "^1.0.3",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "socket.io": "^2.0.3",
+    "vue": "^2.4.2",
+    "vue-chartjs": "^2.8.1"
   }
 }

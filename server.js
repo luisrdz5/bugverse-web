@@ -7,20 +7,19 @@ const chalk = require('chalk')
 const path = require('path')
 const socketio = require('socket.io')
 const BugverseAgent = require('bugverse-agent')
-const proxy = require('proxy')
-const asycnify = require('express-asyncify')
+const proxy = require('./proxy')
+const asyncify = require('express-asyncify')
 
 const port = process.env.PORT || 8080
-const app = asycnify(express())
+const app = asyncify(express())
 const server = http.createServer(app)
 const io = socketio(server)
 
 const agent = new BugverseAgent()
 const { pipe } = require('./utils')
 
-app.use(express.static(path.join(__dirname, 'public')))
-
 app.use('/', proxy)
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Socket.io  /Websockets
 io.on('connect', socket => {
